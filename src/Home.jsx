@@ -63,6 +63,8 @@ const Home = () => {
                 This is a jokes app 😜
             </nav>
 
+            <p className="warning">Warning: Don't scroll to the very bottom, a demon ☠️👺 lives there</p>
+
 
             {/* content */}
 

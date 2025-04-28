@@ -9,3 +9,13 @@ nav {
     font-weight: 400;
     color: grey;
 }
+
+.warning {
+    color: red;
+    width: 500px;
+    margin: 20px auto;
+    padding: 10px;
+    border-radius: 20px;
+    text-align: center;
+    background: rgb(244, 171, 171);
+}
