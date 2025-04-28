@@ -1,0 +1,11 @@
+nav {
+    width: 100vw;
+    height: 70px;
+    display: grid;
+    place-items: center;
+    border-bottom: 2px solid grey;
+    background: lightgrey;
+    font-size: 30px;
+    font-weight: 400;
+    color: grey;
+}
