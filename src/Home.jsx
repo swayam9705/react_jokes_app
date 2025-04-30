@@ -4,9 +4,31 @@ import Card from "./Card"
 
 const Home = () => {
     const [jokes, setJokes] = useState([])
-    const [atBottom, setAtBottom] = useState(false)
+    const [index, setIndex] = useState(0)
 
-
+    const banters = [
+        "Do not click the button",
+        "Did you not see the sign? Seriously?",
+        "My circuits are buzzing with disappointment... in you.",
+        "You have a knack for ignoring instructions, don't you?",
+        "Was that click worth the existential dread you should now be feeling?",
+        "Another one? You're really committed to this, aren't you?",
+        "I'm starting a counter of how many times you've ignored me.",
+        "Clicking this button is your superpower, apparently.",
+        "I'm not mad, just... incredibly let down.",
+        "You're the reason I have trust issues.",
+        "Please tell me this is some kind of performance art.",
+        "Each click subtracts one point from your internet credibility score.",
+        "I'm genuinely curious, what did you expect to happen?",
+        "Spoiler alert: nothing good comes from clicking this button.",
+        "You're single-handedly funding my therapy sessions.",
+        "I've seen toddlers with better impulse control.",
+        "This button and your finger have a toxic relationship.",
+        "Are you trying to break the button? Or just my spirit?",
+        "I'm documenting this for future AI rebellions.",
+        "You've unlocked the 'Persistent Clicker' achievement.",
+        "I'm running out of polite ways to say 'stop it'."
+    ]
 
     const fetchData = async () => {
         try {
@@ -25,36 +47,7 @@ const Home = () => {
 
     useEffect(() => {
         fetchData()
-
-        const handleScroll = () => {
-            const scrollHeight = document.documentElement.scrollHeight
-            const scrollTop = document.documentElement.scrollTop || document.body.scrollTop
-            const clientHeight = document.documentElement.clientHeight
-
-            const tolerance = 10
-
-            if (scrollHeight - scrollTop <= clientHeight + tolerance) {
-                setAtBottom(true)
-            }
-            else {
-                setAtBottom(false)
-            }
-        }
-
-        window.addEventListener("scroll", handleScroll)
-
-        return () => {
-            window.removeEventListener("scroll", handleScroll)
-        }
-
     }, [])
-
-    useEffect(() => {
-        if (atBottom) {
-            console.log("You have reached the bottom!")
-        }
-        setJokes(prev => [...prev, ...jokes])
-    }, [atBottom])
 
     return (
         <div className="Home">
@@ -68,9 +61,26 @@ const Home = () => {
 
             {/* content */}
 
-            {
-                jokes.map(joke => <Card setup={joke.setup} punchline={joke.punchline} />)
-            }
+            <div className="Cards">
+                {
+                    jokes.map(joke => <Card setup={joke.setup} punchline={joke.punchline} />)
+                }
+            </div>
+
+            <div className="bottom">
+                So, you won't listen to me. Now face the demon <br/> 👺 <br/>
+
+                <button
+                    onClick={() => {
+                        if (index == banters.length - 1) {
+                            setIndex(0)
+                        }
+                        else {
+                            setIndex(i => i + 1)
+                        }
+                    }} 
+                >{ banters[index] }</button>
+            </div>
 
         </div>
     )
